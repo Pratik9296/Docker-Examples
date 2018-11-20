@@ -1,0 +1,14 @@
+FROM centos:6.8
+
+ARG url
+
+# RUN echo "${url}" > test.txt
+
+RUN yum update -y && \
+   yum -y install wget 
+RUN wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "${url}"
+
+RUN yum -y localinstall jdk-*.rpm && rm jdk-*.rpm
+
+
+
